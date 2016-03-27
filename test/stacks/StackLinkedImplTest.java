@@ -5,7 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-
+import java.util.Iterator;
 import org.junit.Test;
 
 public class StackLinkedImplTest {
@@ -59,13 +59,29 @@ public class StackLinkedImplTest {
 	
 	@Test
 	public void popTest_emptyStack() {
-		StackLinkedImpl<String> linkedStack = new StackLinkedImpl<>();
+		linkedStack = new StackLinkedImpl<>();
 		try {
 			linkedStack.pop();
 		}
 		catch(Exception e) {
 			assertEquals("Cannot pop from an empty Stack.", e.getMessage());
 		}
+	}
+	
+	@Test
+	public void iteratorTest() {
+		linkedStack = new StackLinkedImpl<>();
+		linkedStack.push("Elena");
+		linkedStack.push("Manuel");
+		linkedStack.push("Guillermo");
+		
+		Iterator<Object> iterator = linkedStack.iterator();
+		
+		assertTrue(iterator.hasNext());
+		assertEquals("Guillermo", iterator.next());
+		assertEquals("Manuel", iterator.next());
+		assertEquals("Elena", iterator.next());
+		assertFalse(iterator.hasNext());
 	}
 	
 

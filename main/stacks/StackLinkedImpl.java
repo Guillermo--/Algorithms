@@ -1,5 +1,7 @@
 package stacks;
 
+import java.util.Iterator;
+
 public class StackLinkedImpl<E> {
 
 	private Node root;
@@ -30,13 +32,8 @@ public class StackLinkedImpl<E> {
 			root = newNode;
 		}
 		else {
-			Node runner = root;
-			while(null != runner.next){
-				runner = runner.next;
-			}
-			runner.next = newNode;
+			getTail().next = newNode;
 		}
-		
 		size++;
 	}
 	
@@ -74,6 +71,45 @@ public class StackLinkedImpl<E> {
 
 	public boolean isEmpty() {
 		return size == 0;
+	}
+	
+	private Node getTail() {
+		Node runner = root;
+		while(null != runner.next){
+			runner = runner.next;
+		}
+		return runner;
+	}
+	
+	private Node getElementAtIndex(int index) {
+		Node node = null;
+		if(!isEmpty()) {
+			Node runner = root;
+			for(int i = 0; i<index; i++){
+				runner = runner.next;
+			}
+			node = runner;
+		}
+		return node;
+	}
+
+	public Iterator<E> iterator() {
+		return new LinkedStackIterator();
+	}
+	
+	private class LinkedStackIterator implements Iterator<E>{
+		private int current = size;
+		
+		@Override
+		public boolean hasNext() {
+			return current > 0;
+		}
+
+		@Override
+		public E next() {
+			Node node = getElementAtIndex(--current);
+			return node.element;
+		}
 	}
 	
 	
