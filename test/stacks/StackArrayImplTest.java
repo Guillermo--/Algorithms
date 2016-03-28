@@ -100,6 +100,31 @@ public class StackArrayImplTest {
 	}
 	
 	@Test
+	public void peekTest_typical() {
+		StackArrayImpl<String> testObject = new StackArrayImpl<>();
+		testObject.push(new String("Guillermo"));
+		testObject.push(new String("Cecilia"));
+		testObject.push(new String("Elena"));
+		testObject.push(new String("Manuel"));
+		
+		String peekedString = testObject.peek();
+		
+		assertEquals("Manuel", peekedString);
+		assertEquals(4, testObject.getSize());
+	}
+	
+	@Test
+	public void peekTest_emptyStack() {
+		testObject = new StackArrayImpl<>();
+		try {
+			testObject.peek();
+		}
+		catch(Exception e) {
+			assertEquals("Cannot peek from an empty Stack.", e.getMessage());
+		}
+	}
+	
+	@Test
 	public <E> void iteratorTest_constructor(){
 		testObject = new StackArrayImpl<>();
 		

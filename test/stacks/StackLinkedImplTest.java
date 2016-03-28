@@ -10,26 +10,26 @@ import org.junit.Test;
 
 public class StackLinkedImplTest {
 
-	StackLinkedImpl<Object> linkedStack;
+	StackLinkedImpl<Object> testObj;
 	
 	@Test
 	public void constructorTest() {
-		linkedStack = new StackLinkedImpl<>();
+		testObj = new StackLinkedImpl<>();
 		
-		assertNotNull(linkedStack);
-		assertNull(linkedStack.getFirst());
-		assertEquals(0, linkedStack.getSize());
+		assertNotNull(testObj);
+		assertNull(testObj.getFirst());
+		assertEquals(0, testObj.getSize());
 	}
 	
 	@Test
 	public void pushTest() {
-		linkedStack = new StackLinkedImpl<>();
-		linkedStack.push(new Object());
-		linkedStack.push(new Object());
-		linkedStack.push(new Object());
+		testObj = new StackLinkedImpl<>();
+		testObj.push(new Object());
+		testObj.push(new Object());
+		testObj.push(new Object());
 
-		assertEquals(3, linkedStack.getSize());
-		assertFalse(linkedStack.isEmpty());
+		assertEquals(3, testObj.getSize());
+		assertFalse(testObj.isEmpty());
 	}
 	
 	@Test
@@ -59,9 +59,9 @@ public class StackLinkedImplTest {
 	
 	@Test
 	public void popTest_emptyStack() {
-		linkedStack = new StackLinkedImpl<>();
+		testObj = new StackLinkedImpl<>();
 		try {
-			linkedStack.pop();
+			testObj.pop();
 		}
 		catch(Exception e) {
 			assertEquals("Cannot pop from an empty Stack.", e.getMessage());
@@ -70,12 +70,12 @@ public class StackLinkedImplTest {
 	
 	@Test
 	public void iteratorTest() {
-		linkedStack = new StackLinkedImpl<>();
-		linkedStack.push("Elena");
-		linkedStack.push("Manuel");
-		linkedStack.push("Guillermo");
+		testObj = new StackLinkedImpl<>();
+		testObj.push("Elena");
+		testObj.push("Manuel");
+		testObj.push("Guillermo");
 		
-		Iterator<Object> iterator = linkedStack.iterator();
+		Iterator<Object> iterator = testObj.iterator();
 		
 		assertTrue(iterator.hasNext());
 		assertEquals("Guillermo", iterator.next());
@@ -83,6 +83,4 @@ public class StackLinkedImplTest {
 		assertEquals("Elena", iterator.next());
 		assertFalse(iterator.hasNext());
 	}
-	
-
 }

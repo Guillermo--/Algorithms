@@ -54,6 +54,22 @@ public class StackArrayImpl<E> {
 		return element;
 	}
 	
+	public E peek() {
+		E element = null;
+		if(!isEmpty()) {
+			element = (E) stack[size - 1];
+		}
+		else {
+			try {
+				throw new Exception("Cannot peek from an empty Stack.");
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return element;
+	}
+
 	public Iterator<E> iterator() {
 		return new StackArrayIterator();
 	}
@@ -74,4 +90,5 @@ public class StackArrayImpl<E> {
 		}
 		
 	}
+
 }
