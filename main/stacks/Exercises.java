@@ -2,10 +2,9 @@ package stacks;
 
 import java.util.Stack;
 
-public class Exercises {
 
-	//Assuming parenthesis will only be in the inner most positions. 
-	//(i.e. always inside square brackets, which in turn will always be inside curly braces)
+public class Exercises {
+	
 	public boolean areParenthesisBalanced(String string) {
 		Stack<Character> stack = new Stack<>();
 		for(int i = 0; i<string.length(); i++) {
@@ -19,6 +18,31 @@ public class Exercises {
 			}
 		}
 		return true;
+	}
+
+	public String insertLeftParenthesis(String input) {
+		return null;
+	}
+	
+	public static class CopyStack {
+		
+		@SuppressWarnings("unchecked")
+		public static <E> Stack<E> copy(Stack<E> stack) {
+			Stack<E> newStack = new Stack<>();
+			Stack<E> temp = new Stack<>();
+			
+			for(Object element : stack) {
+				temp.push((E) element);
+			}
+			
+			for(Object element : temp) {
+				newStack.push((E) element);
+			}
+			
+			temp = null;
+			
+			return newStack;
+		}
 	}
 	
 	
