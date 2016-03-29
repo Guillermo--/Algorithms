@@ -47,19 +47,36 @@ public class GLinkedList<E> {
 		E removedElement = null;
 				
 		if(size > 0) {
-			Node runner = first;
-			while(runner.next.next != null) {
-				runner = runner.next;
+			if(size == 1) {
+				removedElement = first.element;
+				first = null;
 			}
-			
-			removedElement = runner.next.element;
-			runner.next = null;
+			else {
+				Node runner = first;
+				while(runner.next.next != null) {
+					runner = runner.next;
+				}
+				
+				removedElement = runner.next.element;
+				runner.next = null;
+			}
+		} 
+		else {
+			try {
+				throw new Exception("Cannot remove from an empty LinkedList.");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		
 		size--;
 		
 		return removedElement;
 	}
 	
+	public boolean isEmpty() {
+		return size == 0;
+	}
 	
 	
 }
