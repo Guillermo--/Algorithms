@@ -45,11 +45,7 @@ public class StackArrayImpl<E> {
 			}
 		}
 		else {
-			try {
-				throw new Exception("Cannot pop from an empty Stack.");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			throw new NullPointerException("Cannot pop from an empty Stack.");
 		}
 		return element;
 	}
@@ -60,11 +56,7 @@ public class StackArrayImpl<E> {
 			element = (E) stack[size - 1];
 		}
 		else {
-			try {
-				throw new Exception("Cannot peek from an empty Stack.");
-			} catch(Exception e) {
-				e.printStackTrace();
-			}
+			throw new NullPointerException("Cannot peek from an empty Stack.");
 		}
 		
 		return element;

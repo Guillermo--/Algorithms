@@ -1,6 +1,7 @@
 package linkedLists;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -83,16 +84,105 @@ public class GLinkedListTest {
 		assertNull(testObject.getFirst());
 	}
 	
-	@Test
+	@Test(expected = NullPointerException.class)
 	public void removeLastTest_removeFromEmptyList() {
 		testObject = new GLinkedList<>();
-		try {
-			testObject.removeLast();
-		}
-		catch(Exception e) {
-			assertEquals("Cannot remove from an empty LinkedList.", e.getMessage());
-		}
+		testObject.removeLast();
+	}
+	
+	@Test
+	public void removeKthElementTest_typical() {
+		GLinkedList<String> testObject = new GLinkedList<>();
+		testObject.insert("Guillermo");
+		testObject.insert("Manuel");
+		testObject.insert("Elena");
+		testObject.insert("Cecilia");
+		
+		String removedElement = testObject.removeKthElement(3);
+		
+		assertEquals(3, testObject.getSize());
+		assertEquals("Elena", removedElement);
+	}
+	
+	@Test(expected = IndexOutOfBoundsException.class)
+	public void removeKthElementTest_outOfBounds() {
+		GLinkedList<String> testObject = new GLinkedList<>();
+		testObject.insert("Guillermo");
+		testObject.insert("Manuel");
+		testObject.insert("Elena");
+		testObject.insert("Cecilia");
+		
+		testObject.removeKthElement(6);
+	}
+	
+	@Test
+	public void findTest_typical() {
+		GLinkedList<String> testObject = new GLinkedList<>();
+		testObject.insert("Guillermo");
+		testObject.insert("Manuel");
+		testObject.insert("Elena");
+		testObject.insert("Cecilia");
+		
+		assertTrue(testObject.find("Manuel"));
+		assertFalse(testObject.find("Jasmine"));
+	}
+	
+	@Test
+	public void findTest_emptyList() {
+		GLinkedList<String> testObject = new GLinkedList<>();
+		assertFalse(testObject.find("Memo"));
+	}
+	
+	@Test
+	public void insertAfterTest() {
+		GLinkedList<String> testObject = new GLinkedList<>();
+		testObject.insert("Guillermo");
+		testObject.insert("Manuel");
+		testObject.insert("Elena");
+		testObject.insert("Cecilia");
+		
+		testObject.insertAfter("Manuel", "Chu");
+		
+		assertEquals(5, testObject.getSize());
+		assertEquals("Chu", testObject.get(2));
+	}
+	
+	@Test
+	public void getTest_typical(){
+		GLinkedList<String> testObject = new GLinkedList<>();
+		testObject.insert("Guillermo");
+		testObject.insert("Manuel");
+		testObject.insert("Elena");
+		testObject.insert("Cecilia");
+		
+		assertEquals("Elena", testObject.get(2));
+	}
+	
+	@Test
+	public void getTest_oneElement(){
+		GLinkedList<String> testObject = new GLinkedList<>();
+		testObject.insert("Guillermo");
+		
+		assertEquals("Guillermo", testObject.get(0));
+	}
+	
+	@Test
+	public void removeAllTest_typical() {
+		GLinkedList<String> testObject = new GLinkedList<>();
+		testObject.insert("a");
+		testObject.insert("b");
+		testObject.insert("b");
+		testObject.insert("c");
+		testObject.insert("e");
+		testObject.insert("a");
+		testObject.insert("w");
+		
+		testObject.removeAll("b");
+		
+		assertEquals(5, testObject.getSize());
+		assertFalse(testObject.find("b"));
 		
 	}
+	
 
 }

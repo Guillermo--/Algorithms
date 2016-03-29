@@ -57,15 +57,11 @@ public class StackLinkedImplTest {
 		assertEquals("Elena", actualElement);
 	}
 	
-	@Test
+	@Test(expected = NullPointerException.class)
 	public void popTest_emptyStack() {
 		testObj = new StackLinkedImpl<>();
-		try {
-			testObj.pop();
-		}
-		catch(Exception e) {
-			assertEquals("Cannot pop from an empty Stack.", e.getMessage());
-		}
+		testObj.pop();
+
 	}
 	
 	@Test

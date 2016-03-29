@@ -88,15 +88,10 @@ public class StackArrayImplTest {
 		assertEquals("Elena", actualString);
 	}
 	
-	@Test
+	@Test(expected = NullPointerException.class)
 	public void popTest_emptyStack() {
 		testObject = new StackArrayImpl<>();
-		try {
-			testObject.pop();
-		}
-		catch(Exception e) {
-			assertEquals("Cannot pop from an empty Stack.", e.getMessage());
-		}
+		testObject.pop();
 	}
 	
 	@Test
@@ -113,15 +108,10 @@ public class StackArrayImplTest {
 		assertEquals(4, testObject.getSize());
 	}
 	
-	@Test
+	@Test(expected = NullPointerException.class)
 	public void peekTest_emptyStack() {
 		testObject = new StackArrayImpl<>();
-		try {
-			testObject.peek();
-		}
-		catch(Exception e) {
-			assertEquals("Cannot peek from an empty Stack.", e.getMessage());
-		}
+		testObject.peek();
 	}
 	
 	@Test

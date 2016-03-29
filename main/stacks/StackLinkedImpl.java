@@ -59,11 +59,7 @@ public class StackLinkedImpl<E> {
 			size--;
 		}
 		else {
-			try {
-				throw new Exception("Cannot pop from an empty Stack.");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			throw new NullPointerException("Cannot pop from an empty Stack.");
 		}
 		
 		return element;
