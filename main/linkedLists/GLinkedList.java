@@ -158,26 +158,33 @@ public class GLinkedList<E> {
 				if(first.element.equals(toRemove)){
 					if(size == 1) {
 						first = null;
+						size--;
 						break;
 					}
 					if(size == 2) {
 						first = first.next;
-						
+						runner = first;
+						preRunner = runner;
 					}
 					else {
 						first = first.next;
 						preRunner = first;
 						runner = preRunner.next;
 					}
+					size--;
 				}
 				
 				else if(runner.element.equals(toRemove)) {
-					preRunner.next = runner.next;
-					preRunner = preRunner.next;
+					runner = runner.next;
+					preRunner.next = runner;
+					size--;
+				}
+				else {
+					preRunner = runner;
 					runner = runner.next;
 				}
 			}
-			while(runner.next != null);
+			while(runner.next != null || size == 2 || size == 1);
 		}
 	}
 	

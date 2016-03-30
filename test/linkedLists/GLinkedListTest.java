@@ -181,7 +181,19 @@ public class GLinkedListTest {
 		
 		assertEquals(5, testObject.getSize());
 		assertFalse(testObject.find("b"));
+	}
+	
+	@Test
+	public void removeAllTest_removeAllItems() {
+		GLinkedList<String> testObject = new GLinkedList<>();
+		testObject.insert("a");
+		testObject.insert("a");
+		testObject.insert("a");
+		testObject.insert("a");
 		
+		testObject.removeAll("a");
+		
+		assertTrue(testObject.isEmpty());
 	}
 	
 
