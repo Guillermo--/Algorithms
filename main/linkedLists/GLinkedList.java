@@ -101,8 +101,14 @@ public class GLinkedList<E> {
 			return false;
 		}
 		
+		if(size == 1) {
+			if(runner.element.equals(string)) {
+				return true;
+			}
+		}
+		
 		while(runner.next != null) {
-			if(runner.element == string) {
+			if(runner.element.equals(string)) {
 				return true;
 			}
 			runner = runner.next;
@@ -175,13 +181,25 @@ public class GLinkedList<E> {
 				}
 				
 				else if(runner.element.equals(toRemove)) {
-					runner = runner.next;
-					preRunner.next = runner;
+					if(size == 2) {
+						first.next = null;
+						runner = first;
+						preRunner = runner;
+					}
+					else {
+						runner = runner.next;
+						preRunner.next = runner;
+					}
 					size--;
 				}
 				else {
-					preRunner = runner;
-					runner = runner.next;
+					if(runner.next != null) {
+						preRunner = runner;
+						runner = runner.next;						
+					}
+					else {
+						break;
+					}
 				}
 			}
 			while(runner.next != null || size == 2 || size == 1);
