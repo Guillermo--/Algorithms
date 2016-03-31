@@ -1,5 +1,7 @@
 package linkedLists;
 
+import java.math.BigDecimal;
+
 public class GLinkedList<E> {
 
 	private Node first;
@@ -7,7 +9,7 @@ public class GLinkedList<E> {
 	
 	public class Node {
 		public E element;
-		private Node next;
+		public Node next;
 	}
 	
 	public GLinkedList() {
@@ -17,6 +19,10 @@ public class GLinkedList<E> {
 	
 	public Node getFirst() {
 		return first;
+	}
+	
+	public void setFirst(Node first) {
+		this.first = first;
 	}
 	
 	public int getSize() {
@@ -205,7 +211,62 @@ public class GLinkedList<E> {
 			while(runner.next != null || size == 2 || size == 1);
 		}
 	}
+
+	public BigDecimal getMax() {
+		BigDecimal max = new BigDecimal(String.valueOf(first.element));
+		Node runner = first;
+		
+		if(!isEmpty()) {
+			while(runner.next != null) {
+				BigDecimal cur = new BigDecimal(String.valueOf(runner.element));
+				if(cur.compareTo(max) == 1) {
+					max =  cur;
+				}
+				
+				runner = runner.next;
+			}
+		}
+		
+		return max;
+	}
 	
+	public BigDecimal getMax_recursive(Node currentNode, BigDecimal currentMax){
+		if(currentNode.next != null) {
+			BigDecimal currentValue = new BigDecimal(String.valueOf(currentNode.element));
+			if(currentValue.compareTo(currentMax) == 1) {
+				return getMax_recursive(currentNode.next, currentValue);
+			}
+			else {
+				return getMax_recursive(currentNode.next, currentMax);
+			}
+		}
+		return currentMax;
+	}
+
+	public Node reverse() {
+		Node futureRoot = null;
+		
+		if(!isEmpty()) {
+			Node previous = first;
+			
+			if(size == 1) {
+				return first;
+			}
+			
+			while(previous.next != null) {
+				Node runner = previous.next;
+				previous.next = futureRoot;
+				futureRoot = previous;
+				previous = runner;
+				runner = runner.next;
+			}
+			
+			previous.next = futureRoot;
+			futureRoot = previous;
+		}
+		
+		return futureRoot;
+	}
 	
 	
 	

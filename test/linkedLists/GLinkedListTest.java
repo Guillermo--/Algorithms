@@ -6,6 +6,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.math.BigDecimal;
+
 import org.junit.Test;
 
 public class GLinkedListTest {
@@ -208,6 +210,56 @@ public class GLinkedListTest {
 		assertTrue(testObject.find("a"));
 		assertFalse(testObject.find("b"));
 	}
+	
+	@Test
+	public void getMaxTest_iterative() {
+		GLinkedList<Integer> testObject = new GLinkedList<>();
+		testObject.insert(8);
+		testObject.insert(15);
+		testObject.insert(6);
+		testObject.insert(7);
+		testObject.insert(9);
+		testObject.insert(10);
+		testObject.insert(14);
+		
+		BigDecimal max = testObject.getMax();
+		
+		assertEquals(new BigDecimal(15), max);
+	}
+	
+	@Test
+	public void getMaxTest_recursive() {
+		GLinkedList<Integer> testObject = new GLinkedList<>();
+		testObject.insert(8);
+		testObject.insert(15);
+		testObject.insert(6);
+		testObject.insert(7);
+		testObject.insert(9);
+		testObject.insert(10);
+		testObject.insert(14);
+		
+		BigDecimal max = testObject.getMax_recursive(testObject.getFirst(), new BigDecimal(0));
+		
+		assertEquals(new BigDecimal(15), max);
+	}
+	
+	@Test
+	public void reverseTest() {
+		GLinkedList<String> testObject = new GLinkedList<>();
+		testObject.insert("a");
+		testObject.insert("b");
+		testObject.insert("c");
+		testObject.insert("d");
+		
+		GLinkedList<String> reversedList = new GLinkedList<>();
+		reversedList.setFirst(testObject.reverse());
+		
+		assertEquals("d", reversedList.getFirst().element);
+		assertEquals("c", reversedList.getFirst().next.element);
+		assertEquals("b", reversedList.getFirst().next.next.element);
+		assertEquals("a", reversedList.getFirst().next.next.next.element);
+	}
+	
 	
 
 }
