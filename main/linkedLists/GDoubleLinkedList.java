@@ -60,6 +60,28 @@ public class GDoubleLinkedList<E> {
 		size++;
 	}
 
+	public void removeFromBeginning() {
+		if(!isEmpty()) {
+			
+			if(size == 1) {
+				first = null;
+			}
+			else {
+				Node beforeFirst = first.previous;
+				
+				beforeFirst.next = first.next;
+				first.next.previous = beforeFirst;
+				
+				first.previous = null;
+				first = first.next;
+			}
+			size--;
+		}
+		else {
+			throw new NullPointerException();
+		}
+	}
+
 	
 
 }

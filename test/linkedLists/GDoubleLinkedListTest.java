@@ -3,6 +3,7 @@ package linkedLists;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -58,7 +59,48 @@ public class GDoubleLinkedListTest {
 	
 	@Test
 	public void removeFromBeginningTest() {
+		testObject = new GDoubleLinkedList<>();
 		
+		testObject.insertAtBeginning("Guillermo");
+		testObject.insertAtBeginning("Cecilia");
+		testObject.insertAtBeginning("Elena");
+		testObject.insertAtBeginning("Manuel");
+		
+		testObject.removeFromBeginning();
+
+		assertEquals("Elena", testObject.getFirst().element);
+		assertEquals("Cecilia", testObject.getFirst().next.element);
+		assertEquals("Guillermo", testObject.getFirst().previous.element);
+		assertEquals(3, testObject.getSize());
+	}
+	
+	@Test
+	public void removeFromBeginningTest_sizeOneList() {
+		testObject = new GDoubleLinkedList<>();
+		testObject.insertAtBeginning("Guillermo");
+		
+		testObject.removeFromBeginning();
+		
+		assertTrue(testObject.isEmpty());
+		assertNull(testObject.getFirst());
+	}
+	
+	@Test
+	public void removeFromBeginningTest_sizeTwoList() {
+		testObject = new GDoubleLinkedList<>();
+		testObject.insertAtBeginning("Guillermo");
+		testObject.insertAtBeginning("Manuel");
+		
+		testObject.removeFromBeginning();
+
+		assertEquals(1, testObject.getSize());
+		assertEquals("Guillermo", testObject.getFirst().element);
+	}
+	
+	@Test(expected = NullPointerException.class)
+	public void removeFromBeginningTest_emptyList() {
+		testObject = new GDoubleLinkedList<>();
+		testObject.removeFromBeginning();
 	}
 
 }
