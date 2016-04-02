@@ -1,7 +1,6 @@
 package linkedLists;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -20,32 +19,8 @@ public class GDoubleLinkedListTest {
 	}
 	
 	@Test
-	public void insertAtBeginningTest_insertFirstElement() {
+	public void insertAtBeginningTest() {
 		testObject = new GDoubleLinkedList<>();
-		
-		testObject.insertAtBeginning("Guillermo");
-		
-		assertFalse(testObject.isEmpty());
-		assertEquals("Guillermo", testObject.getFirst().element);
-		assertEquals(1, testObject.getSize());
-	}
-	
-	@Test
-	public void insertAtBeginningTest_insertSecondElement() {
-		testObject = new GDoubleLinkedList<>();
-		
-		testObject.insertAtBeginning("Guillermo");
-		testObject.insertAtBeginning("Cecilia");
-		
-		assertEquals("Cecilia", testObject.getFirst().element);
-		assertEquals("Guillermo", testObject.getFirst().next.element);
-		assertEquals(2, testObject.getSize());
-	}
-	
-	@Test
-	public void insertAtBeginningTest_insertMultipleElements() {
-		testObject = new GDoubleLinkedList<>();
-		
 		testObject.insertAtBeginning("Guillermo");
 		testObject.insertAtBeginning("Cecilia");
 		testObject.insertAtBeginning("Elena");
@@ -60,7 +35,6 @@ public class GDoubleLinkedListTest {
 	@Test
 	public void removeFromBeginningTest() {
 		testObject = new GDoubleLinkedList<>();
-		
 		testObject.insertAtBeginning("Guillermo");
 		testObject.insertAtBeginning("Cecilia");
 		testObject.insertAtBeginning("Elena");
@@ -101,6 +75,39 @@ public class GDoubleLinkedListTest {
 	public void removeFromBeginningTest_emptyList() {
 		testObject = new GDoubleLinkedList<>();
 		testObject.removeFromBeginning();
+	}
+	
+	@Test
+	public void insertAtEndTest() {
+		testObject = new GDoubleLinkedList<>();
+		testObject.insertAtEnd("Guillermo");
+		testObject.insertAtEnd("Manuel");
+		
+		assertEquals(2, testObject.getSize());
+		assertEquals("Guillermo", testObject.getFirst().element);
+	}
+	
+	@Test
+	public void removeFromEndTest_typical() {
+		testObject = new GDoubleLinkedList<>();
+		testObject.insertAtEnd("Guillermo");
+		testObject.insertAtEnd("Manuel");
+		testObject.insertAtEnd("Cecilia");
+		testObject.insertAtEnd("Elena");
+		
+		testObject.removeFromEnd();
+		testObject.removeFromEnd();
+		
+		assertEquals(2, testObject.getSize());
+		assertEquals("Guillermo", testObject.getFirst().element);
+		assertEquals("Manuel", testObject.getFirst().next.element);
+		assertEquals("Manuel", testObject.getFirst().previous.element);
+	}
+	
+	@Test(expected = NullPointerException.class)
+	public void removeFromEndTest_emptyList() {
+		testObject = new GDoubleLinkedList<>();
+		testObject.removeFromEnd();
 	}
 
 }

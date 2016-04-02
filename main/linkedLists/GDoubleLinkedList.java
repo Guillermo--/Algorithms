@@ -62,7 +62,6 @@ public class GDoubleLinkedList<E> {
 
 	public void removeFromBeginning() {
 		if(!isEmpty()) {
-			
 			if(size == 1) {
 				first = null;
 			}
@@ -74,6 +73,45 @@ public class GDoubleLinkedList<E> {
 				
 				first.previous = null;
 				first = first.next;
+			}
+			size--;
+		}
+		else {
+			throw new NullPointerException();
+		}
+	}
+
+	public void insertAtEnd(E element) {
+		Node newNode = new Node();
+		newNode.element = element;
+		if(isEmpty()) {
+			first = newNode;
+		}
+		else if(size == 1) {
+			first.next = newNode;
+			first.previous = newNode;
+			newNode.next = first;
+			newNode.previous = first;
+		}
+		else {
+			newNode.next = first;
+			newNode.previous = first.previous;
+			
+			first.previous.next = newNode;
+			first.previous = newNode;
+		}
+		size++;
+	}
+
+	public void removeFromEnd() {
+		if(!isEmpty()) {
+			if(size == 1) {
+				first = null;
+			}
+			else {
+				first.previous.next = null;
+				first.previous.previous.next = first;
+				first.previous = first.previous.previous;
 			}
 			size--;
 		}
