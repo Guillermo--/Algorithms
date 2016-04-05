@@ -119,9 +119,30 @@ public class GDoubleLinkedListTest {
 		testObject.insertAtEnd("Elena");
 		
 		testObject.insertBeforeGivenNode("Cecilia", "Jas");
+		testObject.insertBeforeGivenNode("Guillermo", "Mi");
+		
+		assertEquals(6, testObject.getSize());
+		assertEquals("Jas", testObject.getFirst().next.next.element);
+		assertEquals("Mi", testObject.getFirst().previous.element);
+	}
+	
+	@Test
+	public void insertAfterGivenNodeTest() {
+		testObject = new GDoubleLinkedList<>();
+		testObject.insertAtEnd("Guillermo");
+		testObject.insertAtEnd("Manuel");
+		testObject.insertAtEnd("Cecilia");
+		testObject.insertAtEnd("Elena");
+		
+		testObject.insertAfterGivenNode("Guillermo", "Jas");
 		
 		assertEquals(5, testObject.getSize());
-		assertEquals("Jas", testObject.getFirst().next.next.element);
+		assertEquals("Jas", testObject.getFirst().next.element);
+	}
+	
+	@Test
+	public void removeNode() {
+		
 	}
 
 }

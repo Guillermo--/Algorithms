@@ -144,6 +144,29 @@ public class GDoubleLinkedList<E> {
 		}
 	}
 
+	public void insertAfterGivenNode(E toFind, E toInsert) {
+		if(!isEmpty()) {
+			Node runner = first;
+			
+			while(runner.next != first) {
+				if(runner.element.equals(toFind)){
+					Node newNode = new Node();
+					newNode.element = toInsert;
+					
+					runner.next.previous = newNode;
+					newNode.next = runner.next;
+					
+					runner.next = newNode;
+					newNode.previous = runner;
+					
+					size++;
+				}
+				
+				runner = runner.next;
+			}
+		}
+	}
+
 	
 
 }
