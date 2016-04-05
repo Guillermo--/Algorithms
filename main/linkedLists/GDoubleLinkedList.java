@@ -120,6 +120,30 @@ public class GDoubleLinkedList<E> {
 		}
 	}
 
+	//Assume only one occurrence of node to be found
+	public void insertBeforeGivenNode(E toFind, E toInsert) {
+		if(!isEmpty()) {
+			Node runner = first;
+			
+			while(runner.next != first) {
+				if(runner.element.equals(toFind)) {
+					Node newNode = new Node();
+					newNode.element = toInsert;
+					
+					runner.previous.next = newNode;
+					newNode.previous = runner.previous;
+					
+					runner.previous = newNode;
+					newNode.next = runner;
+					
+					size++;
+				}
+				
+				runner = runner.next;
+			}
+		}
+	}
+
 	
 
 }
