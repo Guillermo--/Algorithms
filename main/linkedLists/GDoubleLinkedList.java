@@ -167,6 +167,23 @@ public class GDoubleLinkedList<E> {
 		}
 	}
 
+	public void removeNode(E element) {
+		if(!isEmpty()){
+			Node runner = first;
+			
+			while(runner.next != first) {
+				if(runner.element.equals(element)) {
+					runner.previous.next = runner.next;
+					runner.next.previous = runner.previous;
+					
+					size--;
+				}
+				
+				runner = runner.next;
+			}
+		}
+	}
+
 	
 
 }

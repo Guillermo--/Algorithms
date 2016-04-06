@@ -141,8 +141,17 @@ public class GDoubleLinkedListTest {
 	}
 	
 	@Test
-	public void removeNode() {
+	public void removeNodeTest() {
+		testObject = new GDoubleLinkedList<>();
+		testObject.insertAtEnd("Guillermo");
+		testObject.insertAtEnd("Manuel");
+		testObject.insertAtEnd("Cecilia");
+		testObject.insertAtEnd("Elena");
 		
+		testObject.removeNode("Manuel");
+		
+		assertEquals(3, testObject.getSize());
+		assertEquals("Cecilia", testObject.getFirst().next.element);
 	}
 
 }
