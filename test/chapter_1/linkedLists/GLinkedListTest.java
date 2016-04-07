@@ -261,7 +261,4 @@ public class GLinkedListTest {
 		assertEquals("b", reversedList.getFirst().next.next.element);
 		assertEquals("a", reversedList.getFirst().next.next.next.element);
 	}
-	
-	
-
 }

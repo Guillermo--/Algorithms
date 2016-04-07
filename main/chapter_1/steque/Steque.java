@@ -33,12 +33,10 @@ public class Steque<E> {
 		newNode.element = element;
 		if(!isEmpty()) {
 			newNode.next = first;
-			first = newNode;
-		}
-		else {
-			first = newNode;
 		}
 		
+		first = newNode;
+	
 		size++;
 	}
 
