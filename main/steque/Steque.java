@@ -31,6 +31,43 @@ public class Steque<E> {
 	public void push(E element) {
 		Node newNode = new Node();
 		newNode.element = element;
+		if(!isEmpty()) {
+			newNode.next = first;
+			first = newNode;
+		}
+		else {
+			first = newNode;
+		}
+		
+		size++;
+	}
+
+	public Node pop() {
+		Node nodeRemoved = new Node();
+		if(!isEmpty()) {
+			nodeRemoved = first;
+			
+			if(size == 1) {
+				first = null;
+			}
+			else {
+				Node newFirst = first.next;
+				first.next = null;
+				first = newFirst;
+			}
+			
+			size--;
+		} 
+		else {
+			throw new NullPointerException();
+		}
+		
+		return nodeRemoved;
+	}
+
+	public void enqueue(E element) {
+		Node nodeToAdd = new Node();
+		nodeToAdd.element = element;
 		
 		if(!isEmpty()){
 			Node runner = first;
@@ -38,10 +75,10 @@ public class Steque<E> {
 				runner = runner.next;
 			}
 			
-			runner.next = newNode;
+			runner.next = nodeToAdd;
 		}
 		else {
-			first = newNode;
+			first = nodeToAdd;
 		}
 		
 		size++;
