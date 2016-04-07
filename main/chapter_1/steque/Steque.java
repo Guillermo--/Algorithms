@@ -1,4 +1,4 @@
-package steque;
+package chapter_1.steque;
 
 /* Stack-ended queue, supports push, pop, and enqueue */
 public class Steque<E> {

@@ -1,4 +1,4 @@
-package stacks;
+package chapter_1.stacks;
 
 import java.util.Iterator;
 

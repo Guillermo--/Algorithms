@@ -1,4 +1,4 @@
-package stacks;
+package chapter_1.stacks;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -9,7 +9,7 @@ import java.util.Stack;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import stacks.Exercises.CopyStack;
+import chapter_1.stacks.Exercises.CopyStack;
 
 public class ExercisesTest {
 

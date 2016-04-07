@@ -1,4 +1,4 @@
-package linkedLists;
+package chapter_1.linkedLists;
 
 public class GDoubleLinkedList<E> {
 	
