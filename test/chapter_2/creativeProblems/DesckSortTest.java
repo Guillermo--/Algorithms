@@ -1,6 +1,7 @@
 package chapter_2.creativeProblems;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -80,6 +81,26 @@ public class DesckSortTest {
 		}
 		for(int i = 39; i<52; i++) {
 			assertEquals("Diamonds", sortedBySuit[i].getSuit());
+		}
+	}
+	
+	@Test
+	public void deckSortTest() {
+		Card[] fullySorted = testObject.sort(inputDeck);
+		
+		assertEquals(52, fullySorted.length);
+
+		for(int i = 1; i< 12; i++) {
+			assertTrue(fullySorted[i].getRank() > fullySorted[i-1].getRank());
+		}
+		for(int i = 14; i< 25; i++) {
+			assertTrue(fullySorted[i].getRank() > fullySorted[i-1].getRank());
+		}
+		for(int i = 27; i< 38; i++) {
+			assertTrue(fullySorted[i].getRank() > fullySorted[i-1].getRank());
+		}
+		for(int i = 40; i< 51; i++) {
+			assertTrue(fullySorted[i].getRank() > fullySorted[i-1].getRank());
 		}
 	}
 
