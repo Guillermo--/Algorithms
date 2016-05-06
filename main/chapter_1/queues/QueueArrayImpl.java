@@ -76,6 +76,8 @@ public class QueueArrayImpl<E> {
 		for(int i = 1; i<actualSize+1; i++) {
 			queue[i-1] = queue[i];
 		}
+		
+		queue[actualSize] = null;
 	}
 	
 	public E peekBottom() {
@@ -88,10 +90,20 @@ public class QueueArrayImpl<E> {
 	
 	public void printQueue() {
 		if(actualSize > 0) {
-			for(int i = 0; i<actualSize; i++) {
+			for(int i = actualSize-1; i>=0; i--) {
 				System.out.println(queue[i]);
 			}
 		}
+	}
+	
+	public boolean isSortedDesc() {
+		for(int i = 1; i<actualSize; i++) {
+			if(Integer.parseInt(String.valueOf(queue[i])) > Integer.parseInt(String.valueOf(queue[i-1]))) {
+				return false;
+			}
+		}
+		
+		return true;
 	}
 	
 }
