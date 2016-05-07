@@ -13,31 +13,32 @@ import chapter_1.queues.QueueArrayImpl;
 
 public class DequeueSort {
 	
-	private static final Integer smallest = 1;
 	private static final Integer largest = 13;
+	private static final Integer smallest = 1;
 	
 	public static QueueArrayImpl<Integer> sort(QueueArrayImpl<Integer> deck){
 		Integer first = null;
 		Integer second = null;
+		int cardsMovedToBottom = 0;
 		
-		for(int i = 0; i<deck.getSize(); i++) {
+		while(cardsMovedToBottom < deck.getSize() && deck.peekFirstAtTop() != smallest) {
 			first = deck.peekFirstAtTop();
 			second = deck.peekSecondAtTop();
 			
-			if(first == smallest || first == largest) {
+			if(first == largest) {
 				deck.moveTopToBottom();
+				cardsMovedToBottom++;
 			}
-			
 			else {
-				if(first < second) {
+				if(first > second){
 					deck.swapTopTwo();
-				} 
-				else {
-					deck.moveTopToBottom();
+					cardsMovedToBottom = 0;
 				}
+				
+				deck.moveTopToBottom();
+				cardsMovedToBottom++;
 			}
 		}
-		
 		
 		return deck;
 	}

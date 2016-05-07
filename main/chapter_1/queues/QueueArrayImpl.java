@@ -90,7 +90,7 @@ public class QueueArrayImpl<E> {
 	
 	public void printQueue() {
 		if(actualSize > 0) {
-			for(int i = actualSize-1; i>=0; i--) {
+			for(int i = 0; i<actualSize; i++) {
 				System.out.println(queue[i]);
 			}
 		}
@@ -98,7 +98,7 @@ public class QueueArrayImpl<E> {
 	
 	public boolean isSortedDesc() {
 		for(int i = 1; i<actualSize; i++) {
-			if(Integer.parseInt(String.valueOf(queue[i])) > Integer.parseInt(String.valueOf(queue[i-1]))) {
+			if(Integer.parseInt(String.valueOf(queue[i])) < Integer.parseInt(String.valueOf(queue[i-1]))) {
 				return false;
 			}
 		}

@@ -26,15 +26,10 @@ public class DequeueSortTest {
 		testObject.enqueue(9);
 		testObject.enqueue(11);
 		
-		
 		DequeueSort.sort(testObject);
-		
-		testObject.printQueue();
-		
-		//assertEquals(13, testObject.getSize());
+				
+		assertEquals(13, testObject.getSize());
 		assertTrue(testObject.isSortedDesc());
-
-		
 	}
 
 }
