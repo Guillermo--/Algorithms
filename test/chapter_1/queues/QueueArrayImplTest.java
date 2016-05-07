@@ -103,4 +103,26 @@ public class QueueArrayImplTest {
 		assertEquals("Cecilia", testObject.peekFirstAtTop());
 		assertEquals("Guillermo", testObject.peekBottom());
 	}
+	
+	@Test
+	public void popTest_typical() {
+		QueueArrayImpl<String> testObject = new QueueArrayImpl<>();
+		testObject.enqueue("Guillermo");
+		testObject.enqueue("Cecilia");
+		testObject.enqueue("Elena");
+		testObject.enqueue("Jas");
+		testObject.enqueue("Manuel");
+		
+		testObject.pop();
+		
+		assertEquals(4, testObject.getSize());
+		assertEquals("Cecilia", testObject.peekFirstAtTop());
+		assertEquals("Manuel", testObject.peekBottom());
+	}
+	
+	@Test(expected = NullPointerException.class)
+	public void popTest_notEnoughElements() {
+		QueueArrayImpl<String> testObject = new QueueArrayImpl<>();
+		testObject.pop();
+	}
 }

@@ -29,7 +29,7 @@ public class DequeueSortTest {
 		DequeueSort.sort(testObject);
 				
 		assertEquals(13, testObject.getSize());
-		assertTrue(testObject.isSortedDesc());
+		assertTrue(testObject.isSortedAsc());
 	}
 
 }

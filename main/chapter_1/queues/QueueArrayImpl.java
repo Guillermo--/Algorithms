@@ -1,6 +1,6 @@
 package chapter_1.queues;
 
-/* Top = First in array*/
+/* Top = First in array */
 public class QueueArrayImpl<E> {
 	
 	int actualSize;
@@ -20,7 +20,6 @@ public class QueueArrayImpl<E> {
 		if(actualSize > queue.length/2) {
 			resize(queue.length * 2);
 		}
-		
 		queue[actualSize++] = element;
 	}
 	
@@ -31,7 +30,6 @@ public class QueueArrayImpl<E> {
 		for(int i = 0; i<actualSize; i++) {
 			newQueue[i] = queue[i];
 		}
-		
 		queue = newQueue;
 	}
 	
@@ -39,7 +37,6 @@ public class QueueArrayImpl<E> {
 		if(actualSize > 0) {
 			return queue[0];
 		}
-		
 		throw new NullPointerException();
 	}
 	
@@ -47,7 +44,6 @@ public class QueueArrayImpl<E> {
 		if(actualSize > 1) {
 			return queue[1];
 		}
-		
 		throw new NullPointerException();
 	}
 	
@@ -76,16 +72,28 @@ public class QueueArrayImpl<E> {
 		for(int i = 1; i<actualSize+1; i++) {
 			queue[i-1] = queue[i];
 		}
-		
 		queue[actualSize] = null;
+	}
+	
+	public boolean isEmpty() {
+		return actualSize == 0;
 	}
 	
 	public E peekBottom() {
 		if(actualSize > 0) {
 			return queue[actualSize-1];
 		}
-		
 		throw new NullPointerException();
+	}
+	
+	public void pop() {
+		if(actualSize > 0) {
+			shiftUp();
+			actualSize--;
+		}
+		else {
+			throw new NullPointerException();
+		}
 	}
 	
 	public void printQueue() {
@@ -96,13 +104,12 @@ public class QueueArrayImpl<E> {
 		}
 	}
 	
-	public boolean isSortedDesc() {
+	public boolean isSortedAsc() {
 		for(int i = 1; i<actualSize; i++) {
 			if(Integer.parseInt(String.valueOf(queue[i])) < Integer.parseInt(String.valueOf(queue[i-1]))) {
 				return false;
 			}
 		}
-		
 		return true;
 	}
 	
