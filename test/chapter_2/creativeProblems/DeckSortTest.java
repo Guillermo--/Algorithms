@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-public class DesckSortTest {
+public class DeckSortTest {
 	
 	Card[] inputDeck = {
 		new Card("Hearts", 5),
