@@ -64,6 +64,28 @@ public class PriorityQueue_UnorderedArrayImplTest {
 		assertEquals(12, removedItem);
 	}
 	
+	@Test
+	public void removeMaxTest_needsResize() {
+		testObject = new PriorityQueue_UnorderedArrayImpl<>();
+		
+		testObject.insert(7);
+		testObject.insert(12);
+		testObject.insert(5);
+		testObject.insert(9);
+		testObject.insert(3);
+		testObject.insert(4);
+		
+		testObject.removeMax();
+		testObject.removeMax();
+		testObject.removeMax();
+		testObject.removeMax();
+		
+		int removed = testObject.removeMax();
+		
+		assertEquals(1, testObject.getSize());
+		assertEquals(4, removed);
+	}
+	
 	@Test(expected = NullPointerException.class)
 	public void removeMaxTest_emptyQueue() {
 		testObject = new PriorityQueue_UnorderedArrayImpl<>();

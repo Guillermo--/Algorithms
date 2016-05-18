@@ -20,8 +20,8 @@ public class PriorityQueue_UnorderedArrayImpl<E extends Comparable<E>> {
 	}
 	
 	public void insert(E element) {
-		if(size > priorityQueue.length/2) {
-			resize(size*2);
+		if(size > priorityQueue.length/4) {
+			resize(size*4);
 		}
 		
 		priorityQueue[size++] = element;
@@ -53,6 +53,10 @@ public class PriorityQueue_UnorderedArrayImpl<E extends Comparable<E>> {
 		removedItem = priorityQueue[size - 1];
 		priorityQueue[size - 1] = null;
 		size--;
+		
+		if(size < priorityQueue.length/4) {
+			resize(size*4);
+		}
 		
 		return removedItem;
 	}
