@@ -58,4 +58,12 @@ public class PriorityQueue_OrderedArrayImpl<E extends Comparable<E>> {
 		}
 		return true;
 	}
+	
+	public E deleteMax() {
+		if(!isEmpty()) {
+			return priorityQueue[--size];
+		}
+		
+		throw new NullPointerException();
+	}
 }

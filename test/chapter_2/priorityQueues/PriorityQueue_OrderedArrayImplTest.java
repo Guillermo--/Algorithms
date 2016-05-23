@@ -29,5 +29,58 @@ public class PriorityQueue_OrderedArrayImplTest {
 		assertEquals(5, testObject.getSize());
 		assertTrue(testObject.isSorted());
 	}
+	
+	@Test
+	public void deleteMaxTest_singleDelete() {
+		testObject = new PriorityQueue_OrderedArrayImpl<>();
+		
+		testObject.insert(2);
+		testObject.insert(1);
+		testObject.insert(9);
+		testObject.insert(5);
+		testObject.insert(7);
+		
+		int deleted = testObject.deleteMax();
+		
+		assertEquals(4, testObject.getSize());
+		assertEquals(9, deleted);
+	}
+	
+	@Test
+	public void deleteMaxTest_multipleDeletes() {
+		testObject = new PriorityQueue_OrderedArrayImpl<>();
+		
+		testObject.insert(2);
+		testObject.insert(1);
+		testObject.insert(9);
+		testObject.insert(5);
+		testObject.insert(7);
+		
+		testObject.deleteMax();
+		testObject.deleteMax();
+		int deleted = testObject.deleteMax();
+		
+		assertEquals(2, testObject.getSize());
+		assertEquals(5, deleted);
+	}
+	
+	@Test (expected = NullPointerException.class)
+	public void deleteMaxTest_nullPointer() {
+		testObject = new PriorityQueue_OrderedArrayImpl<>();
+		
+		testObject.insert(2);
+		testObject.insert(1);
+		testObject.insert(9);
+		testObject.insert(5);
+		testObject.insert(7);
+		
+		testObject.deleteMax();
+		testObject.deleteMax();
+		testObject.deleteMax();
+		testObject.deleteMax();
+		testObject.deleteMax();
+		testObject.deleteMax();
+
+	}
 
 }
