@@ -22,8 +22,16 @@ public class PriorityQueue_Heap<E extends Comparable<E>> {
 	@SuppressWarnings("unchecked")
 	private void resize(int newSize) {
 		E[] temp = (E[]) new Comparable[newSize];
-		for(int i = 0; i<size+1; i++) {
-			temp[i] = heap[i];
+		
+		if(newSize > size) {
+			for(int i = 0; i<size+1; i++) {
+				temp[i] = heap[i];
+			}
+		}
+		else {
+			for(int i = 0; i<newSize; i++) {
+				temp[i] = heap[i];
+			}
 		}
 		
 		heap = temp;
@@ -76,7 +84,15 @@ public class PriorityQueue_Heap<E extends Comparable<E>> {
 	public E deleteMax() {
 		if(!isEmpty()) {
 			sink();
-			return heap[size--];
+			E deleted = heap[size];
+			heap[size] = null;
+			size--;
+			
+			if(size < heap.length/4) {
+				resize(size*4);
+			}
+			
+			return deleted;
 		}
 		
 		throw new NullPointerException();
