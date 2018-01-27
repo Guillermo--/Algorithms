@@ -1,12 +1,11 @@
 package chapter_1.steque;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
-
 import chapter_1.steque.Steque.Node;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StequeTest {
 
@@ -45,12 +44,7 @@ public class StequeTest {
 		assertEquals(2, testObject.getSize());
 		assertEquals("Elena", nodeRemoved.element);
 	}
-	
-	@Test(expected = NullPointerException.class)
-	public void popTest_emptyStack() {
-		Steque<String> testObject = new Steque<>();
-		testObject.pop();
-	}
+
 	
 	@Test
 	public void enqueueTest_typical() {

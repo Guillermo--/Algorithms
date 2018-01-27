@@ -120,7 +120,7 @@ public class GDoubleLinkedList<E> {
 		}
 	}
 
-	//Assume only one occurrence of node to be found
+	/*Assume only one occurrence of node to be found*/
 	public void insertBeforeGivenNode(E toFind, E toInsert) {
 		if(!isEmpty()) {
 			Node runner = first;
@@ -183,6 +183,7 @@ public class GDoubleLinkedList<E> {
 			}
 		}
 	}
+
 
 	
 
